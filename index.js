@@ -3,18 +3,19 @@ const connectToMongo= require('./db')
 connectToMongo();
 const express = require('express')
 const app = express()
-const port = 3000
-
-app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.send("saad rao")
-});
+const port = 5000
 
 app.use((req, res, next) => {
   console.log("Request:", req.method, req.url);
   next();
 });
+
+app.use(express.json())
+
+app.post('/', (req, res) => {
+  res.send("saad rao")
+});
+
  
 
 app.use('/api/auth', require('./routes/auth'))
